@@ -1,0 +1,105 @@
+<!-- 关于dom的树状图 排列  ——————  https://software.hixie.ch/utilities/js/live-dom-viewer/
+    元素节点: 一个元素，存在于DOM中。
+    根节点: 树中顶层节点，在HTML的情况下，总是一个HTML节点（其他标记词汇，如SVG和定制XML将有不
+
+同的根元素）。
+    子节点: 直接位于另一个节点内的节点。例如上面例子中，IMG是SECTION的子节点。
+    后代节点: 位于另一个节点内任意位置的节点。例如 上面例子中，IMG是SECTION的子节点，也是一个后
+
+代节点。IMG不是BODY的子节点，因为它在树中低了BODY两级，但它是BODY的后代之一。
+    父节点: 里面有另一个节点的节点。例如上面的例子中BODY是SECTION的父节点。
+    兄弟节点: DOM树中位于同一等级的节点。例如上面例子中，IMG和P是兄弟。
+    文本节点: 包含文字串的节点 -->
+
+<!-- 
+    首先，下载shopping-list.html文件，并存入本地。你会看到它有一些极小的CSS，一个带有label、input和button的list和一个空的list以及<script> 元素。要添加的所有程序都在script里面。
+    创建三个变量来保存list(<ul>)、<input>和<button>元素的引用。
+
+    创建一个函数响应点击按钮。
+
+    在函数体内，开始要在一个变量中存储输入框的当前值。
+
+    然后，为输入框元素设置空字符 - ''使其为空
+    创建三个新元素 — 一个list项（<li>），<span>和 <button>，并把它们存入变量之中。
+
+    把span和button作为list项的子节点。
+
+    把之前保存的输入框元素的值设置为span的文本内容，按钮的文本内容设置为'Delete'
+
+    把list项设置为list的子节点。
+
+    为删除按钮绑定事件处理程序。当点击按钮时，删除它所在的整个list项。
+
+    最后，使用focus()方法聚焦输入框准备输入下一个购物项。 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        //创建三个变量来保存list(<ul>)、<input>和<button>元素的引用。
+        const list =document.querySelector("ul");
+        const input =document.querySelector("input");
+        const button =document.querySelector("button");
+        //建一个函数响应点击按钮。
+        button.onclick=function(){
+            window.alert("嘿嘿嘿，你点到了哈");
+          //在函数体内，开始要在一个变量中存储输入框的当前值。
+            let myItem = input.value;
+           // 然后，为输入框元素设置空字符 - ''使其为空
+            input.value = '';
+            // 创建三个新元素 — 一个list项（<li>），<span>和 <button>，
+            // 并把它们存入变量之中。
+            const listItem = document.createElement('li');
+            const listText = document.createElement('span');
+            const listBtn = document.createElement('button');
+            //把span和button作为list项的子节点。//
+            
+            listItem.appendChild(listText);
+            //li建了一个子节点listtext
+            listText.textContent = myItem;
+            //按钮
+            listItem.appendChild(listBtn);
+            //把之前保存的输入框元素的值设置为span的文本内容，
+            //按钮的文本内容设置为'Delete'
+            listBtn.textContent = 'Delete';
+            list.appendChild(listItem);
+            //为删除按钮绑定事件处理程序。
+            //当点击按钮时，删除它所在的整个list项。
+            listBtn.onclick = function(e) {
+             list.removeChild(listItem);
+             }
+             //最后，使用focus()方法聚焦输入框准备输入下一个购物项。
+             input.focus();
+      
+        }
+    </script>
+  </body>
+</html>
