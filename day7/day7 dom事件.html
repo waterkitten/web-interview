@@ -20,7 +20,7 @@ var btn= document.querySelector('button');
 var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
 btn.onclick=function(){
     document.body.style.backgroundColor=rndCol;
-    var elem=document.getElementById('test');
+    var elem=document.getElementById('test').style.cssText="color:red; font-size:188px;";
     elem.style.color=rndCol;
     console.log("eeee");
 }
