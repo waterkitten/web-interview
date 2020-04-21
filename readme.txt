@@ -14,3 +14,5 @@
 
     问题
     1 .  那个js 的事件机制   https://developer.mozilla.org/zhCN/docs/Learn/JavaScript/Building_blocks/Events
+    2 . CSS Sprite   图片的合并功能  不太懂
+    3   css animation 的隆的图片  我还没渲染出来
