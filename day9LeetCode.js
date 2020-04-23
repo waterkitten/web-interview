@@ -125,3 +125,36 @@ for(names.front();names.currPos() <= names.length();names.next()){
         return false;
     }
 }
+
+var movies=read(films.txt).split("\n");
+function createArr(file){
+    var arr=read(file).splice("\n");
+    for (var i=0;i<arr.length;++i){
+        arr[i]=arr[i].trim();
+    }
+    return arr;
+}
+var movieList=new List();
+for (var i=0;i<moives.length;i++){
+    movieList.append(moives[i]);
+}
+function displayList(list){
+    for(list.front();list.currPos()<list.length;list.next()){
+        if(list.getElement() instanceof Customer){
+            print(list.getElement()["name"]+", "+
+                list.getElement()["movie"]);
+            
+        }
+        else{
+            print(list.getElement());
+        }
+    }
+}
+var customers =new List();
+function Customer(name,moive){
+    this.name=name;
+    this.moive=moive;
+}
+function checkOut(name,movie){
+    this.name=
+}

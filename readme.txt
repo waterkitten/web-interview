@@ -7,7 +7,8 @@
     day 6    购物清单（DOM操作）
     day 7   DOM 源码实现
     day 8  js的事件处理机制
-
+    day 9 数据结构 
+    day 10  sprite animation
 
 
 
@@ -17,3 +18,7 @@
     2 . CSS Sprite   图片的合并功能  不太懂
     3   css animation 的隆的图片  我还没渲染出来
     4 数据结构的splice 我觉得得重新改写  用for实现一些  害
+    5  数据结构我发现初学撸书是很痛苦的事情  我觉得还是看视频入门
+    6   精灵表玩了游戏 其实我很多疑问  很多没看懂  动画做了一个简单的  明天来试试看 a square sprite sheet
+        https://itnext.io/creating-css-animations-using-sprite-sheet-47e2b7a3793c
+    
