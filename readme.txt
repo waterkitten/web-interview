@@ -23,4 +23,4 @@
         https://itnext.io/creating-css-animations-using-sprite-sheet-47e2b7a3793c
     7  js栈实现了 但this这个还不是很理解 （解决）
        js我复制了一段  栈取最小值但实际上还不是很理解
-    
+    8 那个邮箱补全方面，一开始找的时候，都是些jQuery的东西，好难受，好在找到了一份demo可以来借	      鉴
