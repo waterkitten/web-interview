@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta  content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function Queue() {
+        this.dataStore=[];
+        this.enqueue=enqueue;
+        this.dequeue=dequeue;
+        this.front=front;
+        this.back=back;
+        this.toString=toString;
+        this.empty=empty;
+    }
+    function enqueue(e) {
+        this.dataStore.push(e);
+    }
+    function dequeue() {
+        return this.dataStore.shift[0];
+    }
+    function front() {
+        return this.dataStore[0];
+    }
+    function back() {
+        return this.dataStore[this.dataStore.length-1];
+    }
+    function toString() {
+        var retStr="";
+        for(var i=0;i<this.dataStore.length;++i){
+            retStr+=this.dataStore[i]+"\n";
+        }
+        return retStr;
+    }
+    function empty() {
+        if (this.dataStore.length==0) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function Dancer(name, sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+    var dancers = [ 
+    { sex: "F", names: [ "Allison", "McMillan", "Cheryl", "Ferenback", "Jennifer", "Ingram", "Aurora", "Adney" ] 
+            }, 
+    { sex: "M", names: [ "Frank", "Opitz", "Mason", "McMillan", "Clayton", "Ruff", "Raymond", "Williams", "Bryan", "Frazer", "David", "Durr", "Danny", "Martin" ] }
+            ];
+   
+    
+    function getDancers(males, females)
+    { 
+    for (var i = 0; i < dancers.length; ++i) 
+    { 
+    for (var j = 0; j < dancers[i].names.length; ++j) { 
+    if (dancers[i].sex == "F") { 
+    femaleDancers.enqueue(new Dancer(dancers[i].names[j], dancers[i].sex)); } 
+    else { 
+    maleDancers.enqueue(new Dancer(dancers[i].names[j], dancers[i].sex)); }
+    } 
+    }
+    }
+    
+    function dance(males, females) {
+    console.log("The dance partners are:\n"); 
+    while (!females.empty() && !males.empty()) {
+    person = females.dequeue();
+    console.log("Female dancer is:" + person.name); 
+    person = males.dequeue(); 
+    console.log("and the male dancer is:" + person.name); 
+    } 
+    console.log();
+    }
+    
+    var maleDancers = new Queue();
+    var femaleDancers = new Queue();
+    getDancers(maleDancers, femaleDancers);
+    dance(maleDancers, femaleDancers);
+    if (femaleDancers.count() > 0) 
+    { 
+    console.log( "There are" + femaleDancers.count() + "females dancers waiting to dance." );
+    }
+    if (maleDancers.count() > 0) {
+    console.log( "There are " + maleDancers.count() + " males dancers waiting to dance." );
+    }
+        
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+F 泰勒
+M 强森
+F 范冰冰
+M 成龙
+F  a妹
+M 李连杰
+F  小燕子
+M 史泰龙 -->
+
