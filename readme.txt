@@ -10,11 +10,12 @@
     day 9 数据结构 
     day 10  sprite animation
     day 11-16 数据结构
-    day 18 js项目 {
+    day 17 vue开发
+    day 18 js项目 
 	
 	
-     	}
-
+     	
+	
 
 
 
@@ -33,4 +34,7 @@
     10 那个javascript对HTML的转义和反转义我不理解
     11  那个数据结构的队列我在read（）本地file这里栽了跟头  完全不知所云....目前蹲到的solution是 https://www.jianshu.com/p/a0130aeee66c
      12 小小实现了单向链表和双向链表，但那个循环链表还没碰，不打算碰了 太累了，循环链表懂了后我要去做约瑟夫闭环的问题
-      13  freecamp+baidu_web学院+数据结构
+      13  freecamp+baidu_web学院+数据结构 
+      14 vue开发 是去按照外网的一个袜子商店复刻  https://www.vuemastery.com/courses/intro-to-vue-js/tabs
+           其中涉及到一个vue模板创建的问题 https://medium.com/js-dojo/7-ways-to-define-a-component-template-in-vuejs-c04e0c72900d
+		
