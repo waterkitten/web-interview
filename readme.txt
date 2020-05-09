@@ -9,6 +9,11 @@
     day 8  js的事件处理机制
     day 9 数据结构 
     day 10  sprite animation
+    day 11-16 数据结构
+    day 18 js项目 {
+	
+	
+     	}
 
 
 
