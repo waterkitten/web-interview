@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>头部</header>
+  <div class="clearfix wrapper">
+    <div class="center">主区域</div>
+    <div class="left">左区域</div>
+    <div class="right">右领域</div>
+
+
+  </div>
+  <footer>底部</footer>
+</body>
+
+<style>
+  .center,
+  .left,
+  .right {
+    float: left;
+
+  }
+
+  header {
+    background: darkmagenta;
+  }
+
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .wrapper header {
+    background: darkblue;
+    padding: 100px;
+  }
+
+  .wrapper {
+    padding: 0 100px;
+  }
+
+  .center {
+    background: cadetblue;
+    width: 100%;
+  }
+
+  .left {
+    background: chartreuse;
+    width: 100px;
+    margin-left: -100%;
+    left: -100px;
+    position: relative;
+    /* 定位的问题怎么处理 */
+  }
+
+  .right {
+    background: coral;
+    width: 100px;
+    margin-left: -100px;
+    right: -100px;
+    position: relative;
+    /* 定位的问题怎么处理 */
+  }
+
+  footer {
+    background: darkmagenta;
+  }
+</style>
+
+</html>
