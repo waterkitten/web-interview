@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="trigle"></div>
+  <div class="border-trigle"></div>
+</body>
+<style>
+  .trigle {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-width: 0 40px 40px;
+    border-style: solid;
+    border-color: transparent transparent blue;
+  }
+
+  .trigle:after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: -38px;
+    border-width: 0 38px 38px;
+    border-style: solid;
+    border-color: transparent transparent yellow;
+  }
+
+
+  /* 实现三角形  隐藏两侧 */
+</style>
+
+</html>
