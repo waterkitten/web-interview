@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-</body>
-<script>
-  /**
-   * Definition for a binary tree node.
-   * function TreeNode(val) {
-   *     this.val = val;
-   *     this.left = this.right = null;
-   * }
-   */
-  /**
-   * @param {TreeNode} root
-   * @return {boolean}
-   */
-  var isSymmetric = function (root) {
-    if (root === null)
-      return true
-    return travel(root.left, root.right)
-
-    function travel(left, right) {
-      if (left == null)
-        return right === null
-      if (right == null)
-        return
-      left == null
-      if (left.val !== right.val)
-        return false
+  <body></body>
+  <script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val) {
+     *     this.val = val;
+     *     this.left = this.right = null;
+     * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @return {boolean}
+     */
+    var levelOrder = function (root) {
+      if (root === null) return true
+      return travel(root.left, root.right)
     }
-    return travel(left.left, right.right) && travel(left.right, right.left)
+    function travel(left, right) {
+      if (left === null) return right === null
+      if (right === null) return false
 
-  };
-</script>
+      if (left.val !== right.val) return false
 
+      return travel(left.left, right.right) && travel(left.right, right.left)
+    }
+  </script>
 </html>
