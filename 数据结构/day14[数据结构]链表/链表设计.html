@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 定义节点
+    class Node {
+      constructor(data) {
+        this.data = data;
+        this.next = null;
+      }
+    }
+    // 定义链表
+    class LinkList {
+      constructor() {
+        this.length = 0; // 链表的长度
+        this.head = null; // 链表的头节点
+        this.tail = null; // 链表的尾节点
+      }
+      // 添加一个新节点
+      append(data) {
+        const node = new Node(data);
+        if (!this.head) {
+          this.head = node;
+          this.tail = this.head;
+        } else {
+          this.tail.next = node;
+          this.tail = node;
+        }
+        this.length += 1;
+      }
+      // 输出链表
+      print() {
+        let nowNode = this.head;
+        let listStr = "";
+        while (nowNode) {
+          listStr += nowNode.data.toString() + " ->";
+          nowNode = nowNode.next;
+        }
+        listStr += "null";
+        console.log(listStr);
+        console.log("链表的长度为:" + this.length);
+      }
+      // 获得指定位置的节点
+      _getNode(index) {
+        if (index < 0 || index >= this.length) {
+          return null;
+        }
+        let nowNode = this.head;
+        let nodeIndex = index;
+        while (nodeIndex > 0) {
+          nowNode = nowNode.next;
+          nodeIndex--;
+        }
+        return nowNode;
+      }
+      // 在指定位置插入新的节点
+      insert(data, index) {
+        // index == length：说明是在末尾添加，可以直接调用 append 方法即可
+        if (index == this.length) return this.append(data);
+        // index 值错误
+        if (index > this.length || index < 0) return false;
+
+        let newNode = new Node(data);
+        if (index == 0) {
+          // 如果在头节点前面插入，新的节点就变成了头节点
+          newNode.next = this.head;
+          this.head = newNode;
+        } else {
+          // 要插入的位置是 index, 找到索引为 index-1 的节点，然后进行连接
+          const preNode = this._getNode(index - 1);
+          newNode.next = preNode.next;
+          preNode.next = newNode;
+        }
+        this.length += 1;
+        return true;
+      }
+      // 删除指定的节点
+      remove(index) {
+        if (index < 0 || index >= this.length) return null;
+        let delNode = null;
+        if (index == 0) {
+          delNode = this.head;
+          this.head = this.head.next;
+          // 如果 head 为 null, 说明之前链表里只有一个节点。
+          if (!this.head) this.tail = null;
+        } else {
+          // 找到索引为 index-1 的节点
+          const preNode = this._getNode(index - 1);
+          delNode = preNode.next;
+          /*
+    要从列表中移除当前元素，要做的是将 preNode.next 和 preNode.next.next 链接起来，
+    这样，当前元素就会被丢弃在计算机内存中，等待被垃圾回收器清除。
+    */
+          preNode.next = preNode.next.next;
+          // 如果删除的是尾节点
+          if (!delNode.next) this.tail = preNode;
+        }
+        this.length -= 1;
+        return delNode.data;
+      }
+      // 获取指定位置的节点
+      getData(index) {
+        const nowNode = this._getNode(index);
+        if (nowNode) return nowNode.data;
+        return null;
+      }
+      // 返回指定元素所在的位置，如若没有，返回 -1。
+      indexOf(data) {
+        let index = -1;
+        let nowNode = this.head;
+        while (nowNode) {
+          index += 1;
+          if (nowNode.data == data) return index;
+          nowNode = nowNode.next;
+        }
+        return -1;
+      }
+      // 返回链表大小
+      length() {
+        return this.length;
+      }
+      // 删除头节点
+      removeHead() {
+        return this.remove(0);
+      }
+      // 删除尾节点
+      removeTail() {
+        return this.remove(this.length - 1);
+      }
+      // 返回链表头节点的 data
+      headData() {
+        return this.getData(0);
+      }
+      // 返回链表尾节点的 data
+      tailData() {
+        return this.getData(this.length - 1);
+      }
+      // 判断链表是否为空
+      isEmpty() {
+        return this.length === 0;
+      }
+      // 清空链表
+      clear() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+      }
+    }
+  </script>
+</body>
+
+</html>

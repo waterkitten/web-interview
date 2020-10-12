@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="clock"></div>
+  </body>
+</html>
+<script>
+  var clock = document.getElementById('clock')
+  let intervalId, seconds
+  var boolTrue = 0
+  function conter() {
+    intervalId = window.setInterval(() => {
+      seconds--
+      clock.innerHTML = seconds
+      if (seconds <= 0) {
+        alert('计时结束')
+        window.clearInterval(intervalId)
+      }
+    }, 100)
+  }
+  document.onkeydown = function (e) {
+    var key = e.keyCode || e.which || e.charCode
+    switch (key) {
+      case 37:
+        if (!boolTrue) {
+          window.clearInterval(intervalId)
+          boolTrue = 1
+        } else {
+          boolTrue = 0
+          conter()
+        }
+    }
+  }
+  seconds = 100
+  conter()
+</script>

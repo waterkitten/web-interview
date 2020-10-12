@@ -4,3 +4,11 @@ float 布局: 最初用来解决多栏布局的问题。比如圣杯、双飞燕
 珊格布局: bootstrap 用的布局，把页面分为 24 分，通过 row 和 col 进行布局
 flex 布局: css3 的布局可以非常灵活地进行布局和排版
 grid 布局: 网格布局
+
+position取值absolute、relative与浮动float三者的区别
+
+属性	是否脱离文档流	是否占位	是否影响周围元素在文档流中的位置
+relative	否          	是	          否
+absolute	是	          否          	否
+float	    是	          否	          是
+fixed     是              否           否
