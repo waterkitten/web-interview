@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function Stack(){
+        this.dataStore=[];
+        this.top=0;
+        this.push=push;
+        this.pop=pop;
+        this.peek=peek;
+        this.length=length;
+        this.clear=clear;
+    }
+    function push(e){
+        this.dataStore[this.top++]=e;
+    }
+    function pop(){
+        return this.dataStore[--this.top];
+    }
+    function peek(){
+        return this.dataStore[this.top-1];
+    }
+    function length(){
+        return this.top;
+    }
+    function clear(){
+        this.top=0;
+    }
+    var s=new Stack();
+    s.push("a");
+    s.push("b");
+    s.push("c");
+    s.push("d");
+    console.log("L:"+s.length());
+    console.log(s.peek());
+    s.clear();
+    s.push("e");
+    console.log("L:"+s.length());
+    console.log(s.peek());
+    s.pop();
+    console.log("L:"+s.length());
+    console.log(s.peek());
+
+    </script>
+</body>
+</html>

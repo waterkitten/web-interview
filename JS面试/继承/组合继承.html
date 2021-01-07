@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Person(name) {
+      this.name = name
+    }
+    Person.prototype.sayHello = function () {
+      console.log('Hi! My name is ' + this.name + '.')
+    }
+
+    function Student(name, grade) {
+      console.log(grade)
+      Person.call(this, name)
+      this.grade = grade
+    }
+
+    Student.prototype = Object.create(Person.prototype)
+    Student.prototype.constructor = Student
+    Student.prototype.sayGrade = function () {
+      console.log('I am Grade ' + this.grade + '.')
+    }
+    var student = new Student('Cover', 4)
+    console.log(student.name) // 'Cover'
+    student.sayHello() // 'Hi! My name is Cover.'
+    student.sayGrade() // 'I am Grade 4.'
+    student.hasOwnProperty('name') // true
+  </script>
+</body>
+
+</html>

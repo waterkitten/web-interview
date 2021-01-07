@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>认识Canvas</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="500" height="500" style="border: 1px solid #33"></canvas>
+  <canvas id="figure" width="500" height="500" style="border: 1px solid #33"></canvas>
+  <style>
+    #canvas {
+      background-color: cornflowerblue;
+    }
+
+    #figure {
+      background-color: darkcyan;
+    }
+  </style>
+  <script>
+    // 自由活动
+    var canvas = document.getElementById('canvas')
+    var context = canvas.getContext('2d')
+
+    var monster = {
+      x: 30,
+      y: 50,
+      size: 60,
+    }
+    // 兼容定义 requestAnimFrame
+    var image = new Image()
+    image.src = '../../Logo/monster.PNG'
+    image.onload = function () {
+      context.drawImage(image, monster.x, monster.y, monster.size, monster.size);
+      animate()
+    }
+    // 移动的妖怪
+    function animate() {
+      if (monster.x < 395) {
+        monster.x += 5
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        context.drawImage(image, monster.x, monster.y, monster.size, monster.size)
+        requestAnimationFrame(animate)
+      } else {
+        monster.y += 5
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        context.drawImage(image, monster.x, monster.y, monster.size, monster.size)
+        requestAnimationFrame(animate)
+      }
+
+    }
+    //人物移动控制 
+    var figure = document.getElementById('figure')
+    var figureContext = figure.getContext('2d')
+    var rect = {
+      x: 600,
+      y: 600,
+      width: 100,
+      height: 100,
+      step: 20
+    }
+    //   全局监听键盘操作的keydown事件
+    document.onkeydown = function (e) {
+      var key = e.keyCode || e.which || e.charCode;
+      console.log(key)
+      switch (key) {
+        // 点击左方向键
+        case 37:
+          rect.x -= 20;
+          drawRect();
+          break;
+          // 点击上方向键
+        case 38:
+          rect.y -= 20;
+          drawRect();
+          break;
+          // 点击右方向键
+        case 39:
+          rect.x += 20;
+          drawRect();
+          break;
+          // 点击下方向键
+        case 40:
+          rect.y += 20;
+          drawRect();
+          break;
+      }
+    }
+
+    function drawRect() {
+      context.clearRect(0, 0, figure.width, figure.height)
+      context.fillRect(rect.x, rect.y, rect.width, rect.height)
+    }
+    drawRect()
+  </script>
+</body>
+
+</html>

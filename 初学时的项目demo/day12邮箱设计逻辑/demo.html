@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            margin-left: -2px;
+            margin-top: 0px;
+            padding-left: 0px;
+            width: 160.8px;
+        }
+        li{
+            width: 160.8px;
+            max-width: 160.8px;
+            border: gainsboro solid 1px;
+            list-style: none;
+            padding-left: 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <input id="email-input" type="text">
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+<script>
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+    var email_input = document.getElementById('email-input');
+    var email_sug = document.getElementById('email-sug-wrapper');
+    var key_selected = new Array();
+    email_input.focus();
+
+    email_input.addEventListener('input',function () {
+        getInput();
+        showOrHide();
+        window.onkeydown =function (ev) {
+            var key = ev;
+            if (key.keyCode == 38){
+                for (var i = 0;i < key_selected.length;i++){
+                    if (key_selected[i] == '1'){
+                        key_selected[i] = '0';
+                        break;
+                    }
+                }
+                if (email_sug.innerText != ''){
+                    if (i == 0){
+                        for (var j = (key_selected.length - 1);j >= 0;j--){
+                            if (key_selected[j] != undefined){
+                                key_selected[j] = '1';
+                                email_sug.children[j].style.backgroundColor = '#b9f2ff';
+                                email_sug.children[i].style.backgroundColor = 'white';
+                                key_selected[i] = '0';
+                                break;
+                            }
+                        }
+                    }else {
+                        for (j = i-1;j >= 0;j--){
+                            if (key_selected[j] != undefined){
+                                key_selected[j] = '1';
+                                email_sug.children[j].style.backgroundColor = '#b9f2ff';
+                                email_sug.children[i].style.backgroundColor = 'white';
+                                key_selected[i] = '0';
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if (key.keyCode == 40){
+                for (var i = 0;i < key_selected.length;i++){
+                    if (key_selected[i] == '1'){
+                        key_selected[i] = '0';
+                        break;
+                    }
+                }
+                if (email_sug.innerText != ''){
+                    if (i == (key_selected.length-1)){
+                        key_selected[0] = '1';
+                        email_sug.children[0].style.backgroundColor = '#b9f2ff';
+                        email_sug.children[i].style.backgroundColor = 'white';
+                    }else {
+                        key_selected[i+1] = '1';
+                        email_sug.children[i+1].style.backgroundColor = '#b9f2ff';
+                        email_sug.children[i].style.backgroundColor = 'white';
+                    }
+                }
+            }
+            if (key.keyCode == 13){
+                for (var i = 0;i < key_selected.length;i++){
+                    if (key_selected[i] == '1'){
+                        key_selected[i] = '0';
+                        break;
+                    }
+                }
+                if (email_sug.innerText != ''){
+                    email_input.value = produceSug()[i].replace(/^\<li\>+|\<\/li\>+$/g,'');
+                    hide();
+                }
+            }
+            if (key.keyCode == 27){
+                email_input.select();
+            }
+        };
+        for (var a = 0;a < email_sug.childElementCount;a++) {
+            email_sug.children[a].addEventListener('click',function(){
+                var sug_content = this.innerHTML;
+                email_input.value = sug_content;
+                hide();
+                email_input.focus();
+            });
+            email_sug.children[a].addEventListener('mouseover', function () {
+                this.style.backgroundColor = '#d6f0d3';
+            });
+            email_sug.children[a].addEventListener('mouseout', function () {
+                for(var j=0;j<postfixList.length ;j++) {
+                    if (key_selected[j] == '1') {
+                        email_sug.children[j].style.backgroundColor = '#b9f2ff';
+                    }else {
+                        email_sug.children[j].style.backgroundColor = 'white';
+                    }
+                }
+            });
+        }
+    });
+
+    function getInput() {
+        return email_input.value;
+    }
+    
+    function produceSug() {
+        var trim = getInput();
+        var postSug = new Array();
+        var postSug1 = new Array();
+        var postSug2 = new Array();
+        if (trim.indexOf('@') != -1) {
+            var trim_before = trim.slice(0,trim.indexOf('@'));
+            var trim_after = trim.slice(trim.indexOf('@')+1).replace(/\s|　/gi,"");
+            for (var i = 0;i < postfixList.length;i++){
+                if (trim_after == postfixList[i].slice(0,trim_after.length)){
+                    postSug1[i] =  "<li>" + trim_before + "@" + postfixList[i] + "</li>";
+                }
+                postSug2[i] = "<li>" + trim_before + "@" + postfixList[i] + "</li>";
+            }
+            if (postSug1 != ''){
+                for (i = 0;i < postfixList.length;i++){
+                    if (postSug1[i] != undefined){
+                        postSug1[i] = postSug1[i]
+                    } else {
+                        postSug1[i] = undefined;
+                    }
+                }
+                postSug = postSug1;
+            }else {
+                postSug = postSug2;
+            }
+        }else {
+            for (i = 0; i < postfixList.length; i++) {
+                postSug[i] = "<li>" + trim + "@" + postfixList[i] + "</li>"
+            }
+        }
+        return postSug;
+    }
+    
+    function addSug() {
+        email_sug.innerText = '';
+        var postSug = produceSug();
+        for (var i = 0;i < postSug.length;i++){
+            if (postSug[i] != undefined){
+                email_sug.innerHTML += postSug[i];
+            }
+        }
+    }
+    
+    function showOrHide() {
+        var email_input_replace = email_input.value.replace(/\s|　/gi,"");
+        if (email_input_replace == ''){
+            hide();
+        }else {
+            show();
+        }
+    }
+    
+    function show() {
+        addSug();
+        reset_selected();
+    }
+    
+    function hide() {
+        email_sug.innerText = '';
+    }
+    
+    function reset_selected() {
+        if (getInput() != ''){
+            var postSug = produceSug();
+            var j = 1;
+            key_selected = [];
+            key_selected[0] = '1';
+            email_sug.children[0].style.backgroundColor = '#b9f2ff';
+            for (var i = 1; i < postSug.length; i++) {
+                if (postSug[i] != undefined) {
+                    key_selected[j] = '0';
+                    j++;
+                }
+            }
+        }
+    }
+</script>
+</body>

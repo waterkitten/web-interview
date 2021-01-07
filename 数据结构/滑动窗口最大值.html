@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // ac地址：https://leetcode-cn.com/problems/sliding-window-maximum/
+    // 原文地址：https://xxoo521.com/2020-03-27-max-sliding-window/
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number[]}
+     */
+    var maxSlidingWindow = function (nums, k) {
+      if (k === 0) return [];
+      const length = nums.length;
+      if (length === 0) return [];
+
+      const deque = [];
+      for (let i = 0; i < k; ++i) {
+        cleanDeque(deque, nums, i, k);
+        deque.push(i);
+      }
+
+      const res = [];
+      res.push(nums[deque[0]]);
+
+      for (let i = k; i < length; ++i) {
+        cleanDeque(deque, nums, i, k);
+        deque.push(i);
+        res.push(nums[deque[0]]);
+      }
+
+      return res;
+    };
+
+    /**
+     * 刷新双端队列
+     * @param {number[]} queue 双端队列
+     * @param {number[]} nums 数组
+     * @param {number} idx 当前元素下标
+     * @param {number} k 滑动窗口大小
+     */
+    function cleanDeque(queue, nums, idx, k) {
+      // 如果双向队列中，包含不是滑动窗口内的数，直接出队
+      if (queue.length && idx >= k + queue[0]) {
+        queue.shift();
+      }
+
+      while (queue.length && nums[idx] > nums[queue[queue.length - 1]]) {
+        queue.pop();
+      }
+    }
+  </script>
+</body>
+
+</html>

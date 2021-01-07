@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p></p>
+  <ul id="mylist">
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+  </ul>
+</body>
+<script>
+  const mylist = document.getElementById("mylist")
+  mylist.addEventListener("click", function (e) {
+    console.log(e)
+    const target = e.target
+    if (target.matches("li")) {
+      target.style.backgroundColor = "red"
+
+    }
+    if (target.style.backgroundColor === "red") {
+      target.style.backgroundColor = "white"
+    }
+  })
+</script>
+
+</html>
