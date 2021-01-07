@@ -1,0 +1,45 @@
+p {
+    width: 600px;
+    margin: 0 auto;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-style: italic;
+    font-weight: 100;
+    font-variant-ligatures: normal;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+body{
+    width: 44rpx;
+    margin: 116 auto;
+    
+    background-color: rgb(170, 190, 184);
+    padding: 0 20px 20px 86px;
+   
+    border: 33px solid yellow;
+}
+th,li{
+    color: teal;
+    text-shadow: 3px 3px 1px rgb(16, 206, 41);
+}
+ol{
+    color: violet;
+    background-color: violet;
+    border: 1px solid black;
+    border-bottom: 22rpx solid yellow;
+    padding: 22rpx;
+}
+td{
+    border: 1px solid black;
+  
+    
+}
+th{
+    border: 1px solid chocolate;
+}
+table{
+    border: 20px solid cyan;
+}
+img {
+    display: block;
+    margin: 0 auto;
+  }

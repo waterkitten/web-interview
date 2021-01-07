@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body></body>
+<script>
+  var getIntersectionNode = function (headA, headB) {
+    const map = new Map()
+    let node = headA
+
+    while (node) {
+
+      map.set(node, true)
+      node = node.next
+
+    }
+    node = headB
+    while (node) {
+      if (map.has(node)) {
+        return node
+      }
+      node = node.next
+    }
+    console.log(map)
+    return null
+  }
+
+  let a = [4, 1, 8, 4, 5]
+  let b = [5, 0, 1, 8, 4, 5]
+  getIntersectionNode(a, b)
+</script>
+
+</html>

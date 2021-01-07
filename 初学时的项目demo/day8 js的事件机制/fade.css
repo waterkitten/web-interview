@@ -1,0 +1,27 @@
+div {
+    width: 100px;
+    height: 100px;
+   
+    transition: width 2s, height 2s, transform 2s;
+  }
+  #myLogo {
+    opacity: 1;
+    width: 100px;
+    height: 100px;
+    
+    transition: width 2s, height 2s, transform 2s;
+    /* -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3  ease-in-out; */
+  }
+  #myLogo.fade {
+    opacity:0.5;
+    transition: width 2s;
+  }
+  #myLogo:hover {
+    width: 1200px;
+    height: 1200px;
+    transform: rotate(360deg);
+  }

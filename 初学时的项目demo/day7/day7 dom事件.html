@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="name" type="password" >    
+    <button id="submit-btn" >Submit</button>
+    <textarea id="test" >变色变色变色变色变色啊啊啊啊啊啊啊啊啊啊啊啊  啊啊啊啊啊啊啊啊啊啊啊</textarea>
+
+</body>
+<script>
+function random(number) {
+  return Math.floor(Math.random()*(number+1));
+}
+var btn= document.querySelector('button');
+var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+btn.onclick=function(){
+    document.body.style.backgroundColor=rndCol;
+    var elem=document.getElementById('test').style.cssText="color:red; font-size:188px;";
+    elem.style.color=rndCol;
+    console.log("eeee");
+}
+var inp=document.querySelector('input');
+
+  document.getElementById('submit-btn').accessKey="n"
+  document.getElementById('pwd').accessKey="p"
+
+
+</script>
+</html>

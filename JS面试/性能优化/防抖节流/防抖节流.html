@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="content"
+    style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+
+</body>
+<script>
+  let version_one = "无修改版本"
+  // 防抖（ debounce）
+  // 所谓防抖，就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。
+  let num = 1;
+  let content = document.getElementById('content');
+
+  function count() {
+    content.innerHTML = num++;
+  };
+  // content.onmousemove = count;
+  let version_two = "非立即执行版本"
+  content.onmousemove = debounce(count, 1000);
+
+  // function debounce(func, wait) {
+  //   // 非立即执行版
+  //   // 这个防抖要传入一个函数和时间
+  //   let timeout;
+  //   return function () {
+  //     let context = this;
+  //     let args = arguments;
+
+  //     if (timeout) clearTimeout(timeout);
+
+  //     timeout = setTimeout(() => {
+  //       func.apply(context, args)
+  //     }, wait);
+  //   }
+  // }
+  // function debounce(func, wait) {
+  //   let timeout;
+  //     //   // 非立即执行版
+  // //   // 这个防抖要传入一个函数和时间
+  //   return function () {
+  //     let context = this;
+  //     let args = arguments;
+
+  //     if (timeout) clearTimeout(timeout);
+
+  //     let callNow = !timeout;
+  //     timeout = setTimeout(() => {
+  //       timeout = null;
+  //     }, wait)
+
+  //     if (callNow) func.apply(context, args)
+  //   }
+  // }
+  // 
+  /**
+   * @desc 函数防抖
+   * @param func 函数
+   * @param wait 延迟执行毫秒数
+   * @param immediate true 表立即执行，false 表非立即执行
+   */
+  //  最完美版本
+  function debounce(func, wait, immediate) {
+    let timeout;
+
+    return function () {
+      let context = this;
+      let args = arguments;
+
+      if (timeout) clearTimeout(timeout);
+      if (immediate) {
+        var callNow = !timeout;
+        timeout = setTimeout(() => {
+          timeout = null;
+        }, wait)
+        if (callNow) func.apply(context, args)
+      } else {
+        timeout = setTimeout(function () {
+          func.apply(context, args)
+        }, wait);
+      }
+    }
+  }
+</script>
+
+</html>

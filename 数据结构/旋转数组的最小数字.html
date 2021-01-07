@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /**
+   * @param {number[]} numbers
+   * @return {number}
+   */
+  var minArray = function (numbers) {
+    let i = 0;
+    let j = numbers.length - 1;
+    while (i < j) {
+      let index = Math.floor((i + j) / 2)
+      if (numbers[index] > numbers[j])
+        i = index + 1;
+      else if (numbers[index] < numbers[i])
+        j = index;
+      else
+        j--;
+
+
+    }
+    console.log(numbers[i])
+    return numbers[i]
+
+
+  };
+  numbers = [2, 2, 2, 0, 1]
+  minArray(numbers)
+</script>
+
+</html>

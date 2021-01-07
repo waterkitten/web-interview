@@ -1,0 +1,45 @@
+//dom 入门
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+</head>
+
+<body>
+    <section>
+        <img src="https://mdn.github.io/learning-area/javascript/apis/document-manipulation/dinosaur.png"
+            alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+    </section>
+    <script>
+        //a标签指的是超链接
+        var link = document.querySelector('a');
+        link.textContent = '水哥的博客';
+        link.href = 'https://blog.csdn.net/szuwaterbrother';
+        //获取到seciton元素
+        var sect = document.querySelector('section');
+        //新段落
+        var para = document.createElement('p');
+        //填充文字
+        para.textContent = 'We hope you enjoyed the ride.';
+        //加入段落
+        sect.appendChild(para);
+        var text = document.createTextNode(' — the premier source for web development knowledge.');
+        var linkPara = document.querySelector('p');
+        linkPara.appendChild(text);
+        sect.appendChild(linkPara);
+        //para.setAttribute('class', 'highlight');
+        //linkPara.parentNode.removeChild(linkPara);
+        
+        para.style.color = 'white';
+        para.style.backgroundColor = 'black';
+        para.style.padding = '10px';
+        para.style.width = '250px';
+        para.style.textAlign = 'center';
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<body>
+  <div class="container">
+    <h1 class="text">Rubber Band Animation</h1>
+    <button class="btn">Hover me </button>
+    <div class="box"></div>
+  </div>
+</body>
+
+<style>
+  * {
+    margin: 0%;
+    padding: 0%;
+    /* 设置字体样式 */
+    font-family: "Open Sans", sans-serif;
+  }
+
+  body {
+    height: 100vh;
+    /* 弹性布局 */
+    display: flex;
+    /* 弹性子元素居中，左右居中对齐 */
+    justify-content: center;
+    /* 使盒子在纵轴居中对齐 */
+    align-items: center;
+
+    /* 设置文本居中对齐 */
+    text-align: center;
+  }
+
+  .text {
+    /* 文本转为大写 */
+    text-transform: uppercase;
+  }
+
+  .btn {
+    /* 设置按钮的宽高 */
+    width: 200px;
+    height: 200px;
+    /* 上边边距40px ，0写不写无所谓 */
+    margin: 40px 0;
+    /* 按钮背景色 */
+    background-color: coral;
+    /* 边框设置为没有 */
+    border: none;
+    /* 设置字体颜色 */
+    color: #fff;
+    /* 字体大小 */
+    font-size: 16px;
+    /* 字母转为大写 */
+    text-transform: uppercase;
+    /* 鼠标落在字母上所产生的鼠标样式 */
+    cursor: pointer;
+
+  }
+
+  .box {
+    /* 设置大小 */
+    width: 240px;
+    height: 200px;
+    /* 背景色 */
+    background-color: cadetblue;
+    margin: auto;
+
+  }
+
+  .box:hover {
+    animation: rubberBand 1s;
+  }
+
+  .btn:hover {
+    animation: rubberBand 1s;
+  }
+
+  .text:hover {
+    animation: rubberBand 1s;
+  }
+
+  @keyframes rubberBand {
+
+    /* 起始状态 */
+    0% {
+      /* scale放大特效 */
+      transform: scale3d(1, 1, 1);
+    }
+
+    35% {
+      transform: scale3d(1.25, .75, 1);
+    }
+
+    45% {
+      transform: scale3d(.75, 1, 1);
+    }
+
+    60% {
+      transform: scale3d(1.2, .8, 1);
+    }
+
+    75% {
+      transform: scale3d(1.05, .95, 1);
+    }
+
+    /*末尾状态*/
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+</style>
